@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Image Slider</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+
+	<div class="slide-container">
+		<div class="slider">
+			
+			<div class="slides">
+				<!-- slider navigation button -->
+				<input type="radio" name="radio-btn" id="radio1">
+				<input type="radio" name="radio-btn" id="radio2">
+				<input type="radio" name="radio-btn" id="radio3">
+				<input type="radio" name="radio-btn" id="radio4">
+
+				<!-- next previous btn -->
+				<input type="radio" name="radio-btn" id="next">
+				<input type="radio" name="radio-btn" id="prev">
+
+				<!-- slider img -->
+				<div class="slide first">
+					<img src="img/img1.jpg" alt="">
+				</div>
+				<div class="slide">
+					<img src="img/img2.jpg" alt="">
+				</div>
+				<div class="slide">
+					<img src="img/img3.jpg" alt="">
+				</div>
+				<div class="slide">
+					<img src="img/img4.jpg" alt="">
+				</div>
+			</div>
+
+		
+			<!-- manual navigation design -->
+			<div class="manual-navigation">
+				<label for="radio1" class="manual-btn" onclick="displaySlide(1)"></label>
+				<label for="radio2" class="manual-btn" onclick="displaySlide(2)"></label>
+				<label for="radio3" class="manual-btn" onclick="displaySlide(3)"></label>
+				<label for="radio4" class="manual-btn" onclick="displaySlide(4)"></label>
+			</div>
+
+			<!-- next and prev navigation -->
+			<div class="next-prev-nav">
+				<i class="fas fa-angle-right"></i>
+				<label for="next" class="next-btn" onclick="prevSlide(-1)"><</label>
+				<label for="prev" class="prev-btn" onclick="nextSlide(1)">></label>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- auto slider navigator -->
+
+	<script type="">
+		
+		// auto navigation btn
+
+		// var number = 1;
+
+		// setInterval(function(){
+
+		// 	document.getElementById('radio'+number).checked = true;
+
+		// 	number++;
+
+		// 	if(number>4){
+		// 		number = 1;
+		// 	}
+
+		// },2000);
+
+
+		var first = document.getElementsByClassName('first');
+
+		document.getElementById('radio1').checked = true;
+		setMargin(1);
+
+		var active = 0;
+
+		function displaySlide(n){
+			active = n;
+			document.getElementById('radio'+n).checked = true;
+			setMargin(n);
+		}
+		
+		function setMargin(num){
+			if(num==1){
+				first[0].style.marginLeft = "0%";
+			}
+			else if(num==2){
+				first[0].style.marginLeft = "-20%";
+			}
+			else if(num==3){
+				first[0].style.marginLeft = "-40%";
+			}
+			else if(num==4){
+				first[0].style.marginLeft = "-60%";
+			}else{
+				first[0].style.marginLeft = "0%";
+			}
+		}
+		function nextSlide(p){
+			
+			active = active+p;
+			displaySlide(active);
+
+		}
+		function prevSlide(q){
+
+			active = active+q;
+			displaySlide(active);
+
+		}
+	</script>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+</body>
+</html>
